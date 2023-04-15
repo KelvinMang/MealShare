@@ -8,7 +8,8 @@ class MSCalculator extends StatefulWidget {
 }
 
 class RowData {
-  TextEditingController textBox = TextEditingController();
+  TextEditingController textBox =
+      TextEditingController(text: '0'); // set default value to '0'
   int? selectedValue = 1;
   List<int> numOfPeople = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 }
