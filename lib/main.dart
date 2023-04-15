@@ -5,7 +5,12 @@ import 'calculator.dart';
 void main() => runApp(
       MaterialApp(
         title: "MealShare Calculator",
-        theme: ThemeData(appBarTheme: AppBarTheme(color: Color(0xFF1e7ca7))),
+        theme: ThemeData.dark().copyWith(
+          primaryColor: Color(0xFF0A0E21),
+          appBarTheme: AppBarTheme(color: Color(0xFF0A0E21)),
+          scaffoldBackgroundColor: Color(0xFF0A0E21),
+          textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.white)),
+        ),
         home: MSCalculator(),
       ),
     );

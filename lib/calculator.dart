@@ -33,166 +33,138 @@ class _MSCalculatorState extends State<MSCalculator> {
           padding: EdgeInsets.all(5),
           child: ListView(
             children: <Widget>[
-              Container(height: 100),
               // Row containing DropdownButton and TextField
               Row(
                 children: [
                   // Expanded widget for TextField
                   Expanded(
-                    child: TextField(
-                      controller: textBox1,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Dish 1",
-                        hintText: "Amount of money",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                      ),
+                    child: FeeBox(
+                      textBox: textBox1,
+                      labelText: "Dish 1",
                     ),
                   ),
                   // Expanded widget for DropdownButton
                   Expanded(
-                    child: DropdownButton<int>(
-                      key:
-                          UniqueKey(), // add a unique key to differentiate this DropdownButton from others
-                      value: _selectedValue1,
-                      items: _num_of_people1.map((int value) {
-                        return DropdownMenuItem<int>(
-                          value: value,
-                          child: Text(value.toString()),
-                        );
-                      }).toList(),
-                      onChanged: (int? value) {
-                        setState(() {
-                          _selectedValue1 = value;
-                        });
-                        print("Value changed to $_selectedValue1");
-                      },
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: DropdownButton<int>(
+                        value: _selectedValue1,
+                        items: _num_of_people1.map((int value) {
+                          return DropdownMenuItem<int>(
+                            value: value,
+                            child: Text(value.toString()),
+                          );
+                        }).toList(),
+                        onChanged: (int? value) {
+                          setState(() {
+                            _selectedValue1 = value;
+                          });
+                          print("Value changed to $_selectedValue1");
+                        },
+                      ),
                     ),
                   ),
                 ],
               ),
-              Container(height: 20),
               Row(
                 children: [
                   // Expanded widget for TextField
                   Expanded(
-                    child: TextField(
-                      controller: textBox2,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Dish 2",
-                        hintText: "Amount of money",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                      ),
+                    child: FeeBox(
+                      textBox: textBox2,
+                      labelText: "Dish 2",
                     ),
                   ),
                   // Expanded widget for DropdownButton
                   Expanded(
-                    child: DropdownButton<int>(
-                      key:
-                          UniqueKey(), // add a unique key to differentiate this DropdownButton from others
-                      value: _selectedValue2,
-                      items: _num_of_people2.map((int value) {
-                        return DropdownMenuItem<int>(
-                          value: value,
-                          child: Text(value.toString()),
-                        );
-                      }).toList(),
-                      onChanged: (int? value) {
-                        setState(() {
-                          _selectedValue2 = value;
-                        });
-                        print("Value changed to $_selectedValue2");
-                      },
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: DropdownButton<int>(
+                        key:
+                            UniqueKey(), // add a unique key to differentiate this DropdownButton from others
+                        value: _selectedValue2,
+                        items: _num_of_people2.map((int value) {
+                          return DropdownMenuItem<int>(
+                            value: value,
+                            child: Text(value.toString()),
+                          );
+                        }).toList(),
+                        onChanged: (int? value) {
+                          setState(() {
+                            _selectedValue2 = value;
+                          });
+                          print("Value changed to $_selectedValue2");
+                        },
+                      ),
                     ),
                   ),
                 ],
               ),
-              Container(height: 20),
               Row(
                 children: [
                   // Expanded widget for TextField
                   Expanded(
-                    child: TextField(
-                      controller: textBox3,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Dish 3",
-                        hintText: "Amount of money",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                      ),
-                    ),
+                    child: FeeBox(textBox: textBox3, labelText: "Dish 3"),
                   ),
                   // Expanded widget for DropdownButton
                   Expanded(
-                    child: DropdownButton<int>(
-                      key:
-                          UniqueKey(), // add a unique key to differentiate this DropdownButton from others
-                      value: _selectedValue3,
-                      items: _num_of_people3.map((int value) {
-                        return DropdownMenuItem<int>(
-                          value: value,
-                          child: Text(value.toString()),
-                        );
-                      }).toList(),
-                      onChanged: (int? value) {
-                        setState(() {
-                          _selectedValue3 = value;
-                        });
-                        print("Value changed to $_selectedValue3");
-                      },
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: DropdownButton<int>(
+                        value: _selectedValue3,
+                        items: _num_of_people3.map((int value) {
+                          return DropdownMenuItem<int>(
+                            value: value,
+                            child: Text(value.toString()),
+                          );
+                        }).toList(),
+                        onChanged: (int? value) {
+                          setState(() {
+                            _selectedValue3 = value;
+                          });
+                          print("Value changed to $_selectedValue3");
+                        },
+                      ),
                     ),
                   ),
                 ],
               ),
-              Container(height: 20),
               Row(
                 children: [
                   // Expanded widget for TextField
                   Expanded(
-                    child: TextField(
-                      controller: textBox4,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: "Dish 4",
-                        hintText: "Amount of money",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                      ),
-                    ),
+                    child: FeeBox(textBox: textBox4, labelText: "Dish 4"),
                   ),
                   // Expanded widget for DropdownButton
                   Expanded(
-                    child: DropdownButton<int>(
-                      key:
-                          UniqueKey(), // add a unique key to differentiate this DropdownButton from others
-                      value: _selectedValue4,
-                      items: _num_of_people4.map((int value) {
-                        return DropdownMenuItem<int>(
-                          value: value,
-                          child: Text(value.toString()),
-                        );
-                      }).toList(),
-                      onChanged: (int? value) {
-                        setState(() {
-                          _selectedValue4 = value;
-                        });
-                        print("Value changed to $_selectedValue4");
-                      },
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: DropdownButton<int>(
+                        value: _selectedValue4,
+                        items: _num_of_people4.map((int value) {
+                          return DropdownMenuItem<int>(
+                            value: value,
+                            child: Text(value.toString()),
+                          );
+                        }).toList(),
+                        onChanged: (int? value) {
+                          setState(() {
+                            _selectedValue4 = value;
+                          });
+                          print("Value changed to $_selectedValue4");
+                        },
+                      ),
                     ),
                   ),
                 ],
               ),
               Text(
                 _displayText,
-                style: TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: 16),
               ),
               Row(
                 children: <Widget>[
@@ -238,5 +210,35 @@ class _MSCalculatorState extends State<MSCalculator> {
     _selectedValue3 = 1;
     _selectedValue4 = 1;
     _displayText = "";
+  }
+}
+
+class FeeBox extends StatelessWidget {
+  const FeeBox({
+    Key? key,
+    required this.textBox,
+    required this.labelText,
+  }) : super(key: key);
+
+  final TextEditingController textBox;
+  final String labelText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.only(bottom: 20),
+      child: TextField(
+        controller: textBox,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: labelText,
+          hintText: "Amount of money",
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+        ),
+      ),
+    );
   }
 }
