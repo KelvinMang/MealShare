@@ -7,210 +7,10 @@ class MSCalculator extends StatefulWidget {
   State<MSCalculator> createState() => _MSCalculatorState();
 }
 
-class _MSCalculatorState extends State<MSCalculator> {
-  var _num_of_people1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var _num_of_people2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var _num_of_people3 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var _num_of_people4 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  int? _selectedValue1;
-  int? _selectedValue2;
-  int? _selectedValue3;
-  int? _selectedValue4;
-  String _displayText = ''; // define the _displayText variable
-
-  TextEditingController textBox1 = TextEditingController();
-  TextEditingController textBox2 = TextEditingController();
-  TextEditingController textBox3 = TextEditingController();
-  TextEditingController textBox4 = TextEditingController();
-  @override
-  Widget build(BuildContext context) {
-    TextStyle? textStyle = Theme.of(context).textTheme.titleMedium;
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("MealShare Calculator"),
-        ),
-        body: Container(
-          padding: EdgeInsets.all(5),
-          child: ListView(
-            children: <Widget>[
-              // Row containing DropdownButton and TextField
-              Row(
-                children: [
-                  // Expanded widget for TextField
-                  Expanded(
-                    child: FeeBox(
-                      textBox: textBox1,
-                      labelText: "Dish 1",
-                    ),
-                  ),
-                  // Expanded widget for DropdownButton
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: DropdownButton<int>(
-                        value: _selectedValue1,
-                        items: _num_of_people1.map((int value) {
-                          return DropdownMenuItem<int>(
-                            value: value,
-                            child: Text(value.toString()),
-                          );
-                        }).toList(),
-                        onChanged: (int? value) {
-                          setState(() {
-                            _selectedValue1 = value;
-                          });
-                          print("Value changed to $_selectedValue1");
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  // Expanded widget for TextField
-                  Expanded(
-                    child: FeeBox(
-                      textBox: textBox2,
-                      labelText: "Dish 2",
-                    ),
-                  ),
-                  // Expanded widget for DropdownButton
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: DropdownButton<int>(
-                        key:
-                            UniqueKey(), // add a unique key to differentiate this DropdownButton from others
-                        value: _selectedValue2,
-                        items: _num_of_people2.map((int value) {
-                          return DropdownMenuItem<int>(
-                            value: value,
-                            child: Text(value.toString()),
-                          );
-                        }).toList(),
-                        onChanged: (int? value) {
-                          setState(() {
-                            _selectedValue2 = value;
-                          });
-                          print("Value changed to $_selectedValue2");
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  // Expanded widget for TextField
-                  Expanded(
-                    child: FeeBox(textBox: textBox3, labelText: "Dish 3"),
-                  ),
-                  // Expanded widget for DropdownButton
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: DropdownButton<int>(
-                        value: _selectedValue3,
-                        items: _num_of_people3.map((int value) {
-                          return DropdownMenuItem<int>(
-                            value: value,
-                            child: Text(value.toString()),
-                          );
-                        }).toList(),
-                        onChanged: (int? value) {
-                          setState(() {
-                            _selectedValue3 = value;
-                          });
-                          print("Value changed to $_selectedValue3");
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  // Expanded widget for TextField
-                  Expanded(
-                    child: FeeBox(textBox: textBox4, labelText: "Dish 4"),
-                  ),
-                  // Expanded widget for DropdownButton
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: DropdownButton<int>(
-                        value: _selectedValue4,
-                        items: _num_of_people4.map((int value) {
-                          return DropdownMenuItem<int>(
-                            value: value,
-                            child: Text(value.toString()),
-                          );
-                        }).toList(),
-                        onChanged: (int? value) {
-                          setState(() {
-                            _selectedValue4 = value;
-                          });
-                          print("Value changed to $_selectedValue4");
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                _displayText,
-                style: TextStyle(fontSize: 16),
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                      child: ElevatedButton(
-                          child: Text("Calculate"),
-                          onPressed: () {
-                            setState(() {
-                              double first = double.parse(textBox1.text) /
-                                  (_selectedValue1 ?? 1);
-                              double second = double.parse(textBox2.text) /
-                                  (_selectedValue2 ?? 1);
-                              double third = double.parse(textBox3.text) /
-                                  (_selectedValue3 ?? 1);
-                              double fourth = double.parse(textBox4.text) /
-                                  (_selectedValue4 ?? 1);
-                              _displayText =
-                                  "You have to pay £${(first + second + third + fourth) * 1.125} with 12.5% service charge";
-                            });
-                          })),
-                  Expanded(
-                      child: ElevatedButton(
-                          child: Text("Clear"),
-                          onPressed: () {
-                            setState(() {
-                              _clearAll();
-                            });
-                          }))
-                ],
-              )
-            ],
-          ),
-        ));
-  }
-
-  void _clearAll() {
-    textBox1.text = "";
-    textBox2.text = "";
-    textBox3.text = "";
-    textBox4.text = "";
-    _selectedValue1 = 1;
-    _selectedValue2 = 1;
-    _selectedValue3 = 1;
-    _selectedValue4 = 1;
-    _displayText = "";
-  }
+class RowData {
+  TextEditingController textBox = TextEditingController();
+  int? selectedValue = 1;
+  List<int> numOfPeople = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 }
 
 class FeeBox extends StatelessWidget {
@@ -240,5 +40,138 @@ class FeeBox extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _MSCalculatorState extends State<MSCalculator> {
+  List<RowData> rowData = [RowData()]; // List to store data for each row
+  String _displayText = '';
+
+  // Method to add a new row
+  void addRow() {
+    setState(() {
+      rowData.add(RowData());
+    });
+  }
+
+  var _num_of_people1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var _num_of_people2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var _num_of_people3 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var _num_of_people4 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  int? _selectedValue1;
+  int? _selectedValue2;
+  int? _selectedValue3;
+  int? _selectedValue4;
+
+  TextEditingController textBox1 = TextEditingController();
+  TextEditingController textBox2 = TextEditingController();
+  TextEditingController textBox3 = TextEditingController();
+  TextEditingController textBox4 = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    TextStyle? textStyle = Theme.of(context).textTheme.titleMedium;
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("MealShare Calculator"),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(5),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: rowData.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      children: [
+                        // Expanded widget for TextField
+                        Expanded(
+                          child: FeeBox(
+                            textBox: rowData[index].textBox,
+                            labelText: "Dish ${index + 1}",
+                          ),
+                        ),
+                        // Expanded widget for DropdownButton
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.all(10),
+                            padding: EdgeInsets.only(bottom: 20),
+                            child: DropdownButton<int>(
+                              value: rowData[index].selectedValue,
+                              items:
+                                  rowData[index].numOfPeople.map((int value) {
+                                return DropdownMenuItem<int>(
+                                  value: value,
+                                  child: Text(value.toString()),
+                                );
+                              }).toList(),
+                              onChanged: (int? value) {
+                                setState(() {
+                                  rowData[index].selectedValue = value;
+                                });
+                                print(
+                                    "Value changed to ${rowData[index].selectedValue}");
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              Text(
+                _displayText,
+                style: TextStyle(fontSize: 16),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      child: Text("Add Dishes"),
+                      onPressed: addRow,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                      child: ElevatedButton(
+                          child: Text("Calculate"),
+                          onPressed: () {
+                            setState(() {
+                              double total = 0;
+                              for (var row in rowData) {
+                                total += double.parse(row.textBox.text) /
+                                    (row.selectedValue ?? 1);
+                              }
+                              _displayText =
+                                  "You have to pay £${total * 1.125} with 12.5% service charge";
+                            });
+                          })),
+                  Expanded(
+                      child: ElevatedButton(
+                          child: Text("Clear"),
+                          onPressed: () {
+                            setState(() {
+                              rowData = [RowData()];
+                              _clearAll();
+                            });
+                          }))
+                ],
+              ),
+            ],
+          ),
+        ));
+  }
+
+  void _clearAll() {
+    for (var row in rowData) {
+      row.textBox.text = "";
+      row.selectedValue = 1;
+    }
+    _displayText = "";
   }
 }
