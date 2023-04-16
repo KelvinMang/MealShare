@@ -5,23 +5,7 @@ description: A new Flutter project.
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: https://kelvinmang.github.io/MealShare/ # Remove this line if you wish to publish to pub.dev
 
-...
-web:
-  # The following line ensures that the "build/web" directory is used as the
-  # root of your web app when deployed.
-  targets:
-    $default:
-      builders:
-        web|web_compilation_copy:
-          generate_for:
-            - web
-          options:
-            supported_handlers:
-              - none
-  # Add the following line to set the URL where your web app will be hosted.
-  # Make sure to replace <username> and <repository-name> with your own values.
-  homepage: https://kelvinmang.github.io/MealShare/
-...
+
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
